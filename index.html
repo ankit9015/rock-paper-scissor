@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Rock Paper Scissor</h1>
+    </header>
+    <main>
+        <h2>Score: </h2>
+        <p id="win-loss"></p>
+        <div id="choice-container container">
+            <div class="player-choice">
+                <p>Player: <span id="player-score">0</span></p>
+                <div id="player-show"></div>
+            </div>
+            <div class="computer-choice">
+                <p>Computer: <span id="computer-score">0</span></p>
+                <div id="computer-show"></div>
+            </div>
+        </div>
+        <div>
+            <div id="option-container container">
+                <button id="rock"><img class="option-img" src="" alt="Rock"></button>
+                <button id="paper"><img class="option-img" src="" alt="Paper"></button>
+                <button  id="scissor"><img class="option-img" src="" alt="Scissor"></button>    
+            </div>
+        </div>
+
+        <div id="pop-result">
+            <p id="pop-message"></p>
+            <p>Would you like to play again?</p>
+            <button id="button-restart">Restart</button>
+        </div>
+            
+       
+        
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./app.js" type="text/javascript"></script>
+</body>
+</html>
