@@ -37,9 +37,11 @@ buttonRestart.addEventListener('click', () => {
 
 let playerWin = 0;
 let computerWin = 0;
+let countTrial = 0;
 
 function newMove(playerChoice) {
-    if (playerWin + computerWin === 5) {
+    if (countTrial === 5) {
+        console.log("win/Loss", playerWin, computerWin);
         if (playerWin > computerWin) {
             setTimeout(resultPop("You Won!!"), 200);   
         } else if (playerWin < computerWin) {
@@ -54,12 +56,13 @@ function newMove(playerChoice) {
 
     imagePlayerChoice.innerHTML = db[playerChoice];
     imageComputerChoice.innerHTML = db[computerChoice];
-    
-    compareChoices(playerChoice, computerChoice);
 
     playerScore.innerText = playerWin;
     computerScore.innerText = computerWin;
 
+    countTrial += 1;
+    compareChoices(playerChoice, computerChoice);
+    
 };
 
 function computerMove(db) {
