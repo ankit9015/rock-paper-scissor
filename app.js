@@ -7,12 +7,14 @@ const playerScore = document.querySelector('#player-score');
 const computerScore = document.querySelector('#computer-score');
 const popResult = document.querySelector("#pop-result");
 const buttonRestart = document.querySelector("#button-restart");
+const currentResult = document.querySelector("#win-loss");
+const popResultMessage = document.querySelector("#pop-message");
 
 // console.log(inside);
 
-const db = {"rock": `<img class="option-img" src="" alt="Rock">`,
-        "paper": `<img class="option-img" src="" alt="Paper">`,
-        "scissor": `<img class="option-img" src="" alt="Scissor">`
+const db = {"rock": `<img class="option-img" src="./images/rock.svg" alt="Rock">`,
+        "paper": `<img class="option-img" src="./images/paper.svg" alt="Paper">`,
+        "scissor": `<img class="option-img" src="./images/scissor.svg" alt="Scissor">`
 };
 
 
@@ -38,7 +40,14 @@ let computerWin = 0;
 
 function newMove(playerChoice) {
     if (playerWin + computerWin === 5) {
-        setTimeout(resultPop(), 200);       
+        if (playerWin > computerWin) {
+            setTimeout(resultPop("You Won!!"), 200);   
+        } else if (playerWin < computerWin) {
+            setTimeout(resultPop("You Lost!!"), 200);   
+        } else {
+            setTimeout(resultPop("Draw Game"), 200);   
+        }
+            
     }
 
     let computerChoice = computerMove(db);
@@ -68,23 +77,34 @@ function compareChoices(player, computer) {
     console.log(player, computer);
     if (player === computer) {
         console.log("draw");
+        currentResult.innerText = "Draw"
+        currentResult.style.color = "yellow"
     } else if (player === "rock" && computer ==="scissor") {
         console.log("win");
+        currentResult.innerText = "You won!"
+        currentResult.style.color = "green"
         playerWin += 1;
     } else if (player === "scissor" && computer === "paper") {
         console.log("win");
+        currentResult.innerText = "You won!"
+        currentResult.style.color = "green"
         playerWin += 1;
     } else if (player === "paper" && computer === "rock") {
         console.log("win");
+        currentResult.innerText = "You won!"
+        currentResult.style.color = "green"
         playerWin += 1;
     } else {
         console.log("lost");
+        currentResult.innerText = "You Lost!"
+        currentResult.style.color = "red"
         computerWin += 1;
     }
 };
 
-function resultPop () {
+function resultPop (result) {
     popResult.style.display = "block";
+    popResultMessage.innerText = result;
 };
 
 function refresh () {
